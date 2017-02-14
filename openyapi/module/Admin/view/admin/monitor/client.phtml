@@ -1,0 +1,18 @@
+<script src="http://autobahn.s3.amazonaws.com/js/autobahn.min.js"></script>
+<script>
+    <?php /*var conn = new ab.Session('ws://144.76.63.174:8081',*/?>
+    var conn = new ab.Session('ws://localhost:8081',
+        function() {
+            conn.subscribe('kittensCategory', function(topic, data) {
+                // This is where you would add the new article to the DOM (beyond the scope of this tutorial)
+                console.log('New article published to category "' + topic + '" : ' + data.title);
+            });
+        },
+        function() {
+            console.warn('WebSocket connection closed');
+        },
+        {'skipSubprotocolCheck': true}
+    );
+</script>
+
+Cl

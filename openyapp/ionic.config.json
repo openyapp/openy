@@ -1,0 +1,11 @@
+{
+  "name": "Openy",
+  "app_id": "5a2c281d",
+  "browsers": [
+    {
+      "platform": "android",
+      "browser": "crosswalk",
+      "version": "14.42.334.0"
+    }
+  ]
+}

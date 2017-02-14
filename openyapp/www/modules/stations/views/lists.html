@@ -1,0 +1,79 @@
+<ion-view view-title="<i class='icon-stations openy'></i> Gasolineras">
+    <ion-nav-buttons side="secondary">
+        <button class="button button-openy button-clear" ng-click="showSubmenuMap()">
+            <i class="icon ion-android-more-vertical"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="relative">
+        <div class="text-center submenuMapaContent semiWhite-bg " ng-if="submenuMap">
+            <div class="submenuMapaContentBtn">
+                <button ui-sref="app.stations" class="button ">Mapa</button>
+                <button ui-sref="app.stationslist" class="button active">Lista</button>
+            </div>
+            <hr>
+            <div class="row submenuMapaListFilterFirst">
+                <div ng-class="{active: field==='recommended'}" class="col" ng-click="setOrder('recommended')">
+                    <div><i class="icon-filter_recommended"></i></div>
+                    <div>Recomendadas</div>
+                </div>
+                <div ng-class="{active: field==='distance'}" class="col" ng-click="setOrder('distance')">
+                    <div><i class="icon-filter_distance"></i></div>
+                    <div>Por distancia</div>
+                </div>
+                <div ng-class="{active: field==='price'}" class="col" ng-click="setOrder('price')">
+                    <div><i class="icon-filter_price"></i></div>
+                    <div>Por precio</div>
+                </div>
+            </div>
+            <hr>
+            <div class="row submenuMapaListFilterSecond">
+                <div class="col"   ng-click="setFilter('openy')">
+                    <button ng-class="{active: filter==='openy'}" type="button" ng-click="fuelTypesActive=false" class="button button-clear"><i class="icon-openy"></i></button>
+                    <br>Openy</div>
+                <div class="col" ng-click="setFilter('favorites')">
+                    <button  ng-class="{active: filter==='favorites'}" type="button" ng-click="fuelTypesActive = false" class="button button-clear"><i class="icon-star"></i></button>
+                    <br>Favoritas</div>
+                <div class="col">
+                    <button ng-class="{'active': fuelTypesActive}" ng-click="fuelTypesActive = true" type="button" class="button button-clear"><i class="icon-hose"></i></button>
+                    <br>Combustible</div>
+            </div>
+            <hr>
+            <div class="row flexWrap mapFuelsContent" ng-if="fuelTypesActive">
+                <div class="col col-25 text-center" ng-repeat="fuel in fuelListTypes track by $index">
+                    <button type="button" class="refuelBtn button-clear button" ng-class="{'active':fuel.fuelcode == fuelcode}" ng-href="#" ng-click="setOrder('fuelcode',fuel.fuelcode)"><i class="icon-{{fuel.fuelcode}}"></i></button>
+                </div>
+            </div>
+
+
+        </div>
+        <ion-item collection-repeat="station in stations" class="stationsList">
+            <div class="row row-center" ui-sref="app.station({station: (station |json )})">
+                <div class="col col-10">
+                    <i class="icon-openy openy fsBig" ng-if="station.openy==1"></i>
+                </div>
+                
+                <!-- ui-sref="app.station({stationId:station.Id})"  -->
+                <div class="col col-30">
+                    <img src="img/logos_stations/{{station.logo}}.svg" class="responsive">
+                </div>
+                <div class="col-30 text-right">
+                    <div><strong><i class="icon-{{station.fuelcode}} fsBigx2 openy"></i> {{station.price}}€/l</strong></div>
+                    <!--<div><span class="openy fsSmall">{{station.address}}</span>  <span class="openy">{{station.distance | number:0}} {{station.metric}}</span></div>-->
+                    
+
+                </div>
+                <div class="col col-15 button-openy">
+                    <i class="icon-star fsBig" ng-if="station.favorite==1"></i>
+                </div>
+                <div class="col col-15 text-left">
+                    <button class="openy button-clear" ng-click="goStationGps(station)"><span class="icon-navigator fsBig"><span class="path1"></span><span class="path2"></span></span>
+                    </button>
+                    <div><span class="openy">{{station.distance | number:0}} {{station.metric}}</span></div>
+                </div>
+            </div>
+
+        </ion-item>
+        <ion-infinite-scroll immediate-check="false" ng-if="loadMore" distance="1%" on-infinite="getMoreStations()">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,35 @@
+<ion-view view-title="<i class='openy icon-preferencias'></i> Iniciar sesión">
+    <ion-content class="padding">
+        <div ng-if="vldtCtl.error">
+            <h1>Error</h1>
+            <p>Ha ocurrido un error<br>{{vldtCtl.error}}</p>
+            <p>Por favor ponte en contacto con nosotros para continuar.</p>
+        </div>
+        <h4 class="text-center openy padding">Ya estás registrado</h4>
+        <p>Te hemos enviado un SMS gratuito con tu código de validación al {{vldtCtl.phone | limitTo:-9}}</p>
+        <h4 class="text-center openy padding">Código de validación:</h4>
+        <form name="formValidate">
+            <div class="list list-inset">
+                <div class="item item-input">
+                    <label class="item-input">
+                        <input type="tel" required ng-model="code" name="code" tabindex="1">
+                    </label>
+                    <button class="button openy-bg noBorder" ng-click="vldtCtl.validate(code);" tabindex="2" ng-disabled="formValidate.$invalid || vldtCtl.loading">
+                        Validar
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div ng-if="vldtCtl.loading" class="text-center">
+            <ion-spinner></ion-spinner>
+        </div>
+        <div class="paddign row mTop30">
+            <div class="col text-left">
+                <button ng-disabled="vldtCtl.loading" class="button button-clear button-small" ui-sref="app.register"><strong>No es mi teléfono</strong></button>
+            </div>
+            <div class="col text-right">
+                <button ng-disabled="vldtCtl.loading" type="submit" class="button button-clear button-small" ng-click="vldtCtl.sendCode();"><strong>Reenviar Código</strong></button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,12 @@
+<ion-view title="<i class='icon-refuel openy'></i> Repostar">
+    <ion-content class="grey-bg white refuleingAntifraudpin">        
+        <h4 class="text-center mTop20 white padding"><i class="openy icon ion-alert-circled fsBigx2"></i><br>Te hemos enviado un PIN de validación por SMS por razones de seguridad. Por favor, introdúcelo a continuación</h4>
+        <h4 class="text-center mTop40 white">PIN DE VALIDACIÓN</h4>
+        <div class="refulePinContent text-center clearfix">
+            <div ng-repeat="item in [1,2,3,4] track by $index" ng-class="{'activePin': refuelCtrl.refueling.antifraudPin.length > $index}"></div>
+        </div>
+
+        <ion-numeric-keyboard style="bottom: 20px" id="numericKeyboard" on-key-press="refuelAntifraudpinCtrl.onKeyPress" on-delete-press="refuelAntifraudpinCtrl.onDelete"></ion-numeric-keyboard>
+    </ion-content>
+
+</ion-view>

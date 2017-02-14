@@ -1,0 +1,44 @@
+<div class="collapse navbar-collapse">
+<?php
+    echo $this->navigation('navigation')
+           ->menu()
+           ->setMinDepth(2)
+           ->setMaxDepth(2)
+           ->setUlClass('nav nav-tabs')
+    	   ->renderSubMenu();
+ ?>  
+</div>
+
+
+        <div class="col-md-9" role="main">
+        
+                <!-- Section
+                ================================================== -->
+                <div class="bs-docs-section">
+                <?
+                 	if(isset($this->data))
+                 		echo $this->markdown($this->data); 
+                ?>
+                </div> <!-- /Section -->
+        
+         </div>
+         
+        <!-- Menu
+        ================================================== -->
+        <div class="col-md-3" role="complementary">
+          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
+            <?php
+                echo $this->navigation('navigation')
+                       ->menu()
+                       ->setMinDepth(2)
+                       ->setMaxDepth(2)
+                       ->setUlClass('nav bs-docs-sidenav')
+                	   ->renderSubMenu();
+             ?>
+            
+            <a class="back-to-top" href="#top">
+              Back to top
+            </a>
+          </nav>
+        </div> <!-- /Menu -->
+

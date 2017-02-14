@@ -1,0 +1,26 @@
+class_name: ApiTester
+modules:
+    enabled: 
+       - REST
+       - Db
+       - ElemCeptMailtester\Module\MailTester
+    config:
+       Db:
+          dsn: mysql:host=localhost;dbname=openy;
+          user: 'root'
+          password: '1234'
+          #dump: 'tests/_data/dumps.sql'
+          #populate: true means - to use dump you provided to load data before the test.
+          #populate: true
+          #cleanup: false means to not cleanup database between tests.
+          #cleanup: false
+          #reconnect: true
+       REST:
+          url: http:///
+          depends: PhpBrowser
+          part: Json
+       ElemCeptMailtester\Module\MailTester:
+          provider: "MailTrap"
+          MailTrap:
+                api_token: '1f083efacf10ab83544259c6fa137d85'
+                inbox_id: '71014'

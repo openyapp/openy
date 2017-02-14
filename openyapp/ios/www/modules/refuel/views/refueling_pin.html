@@ -1,0 +1,31 @@
+<ion-view title="<i class='icon-refuel openy'></i> Repostar" class="padding">
+    <ion-content>
+        <div class="text-center">
+            <div class="row text-center">
+                <div class="col">
+                    <div><strong>Surtidor</strong></div>
+                    <button type="button" class="refuelBtn button-clear button active">{{refuelCtrl.refueling.pump}}</button>
+                </div>
+                <div class="col">
+                    <div><strong>Combustible</strong></div>
+                    <button type="button" class="fsBig refuelBtn button-clear button active"><i class="icon-{{refuelCtrl.refueling.fueltype}}"></i></button>
+                </div>
+                <div class="col">
+                    <div><strong>Importe</strong></div>
+                    <button type="button" class="refuelBtn button-clear button active">{{refuelCtrl.refueling.amount}}
+                        <p class="fsSmall mTop0">€</p>
+                    </button>
+                    <div class="refuelingMoreInfo">{{refuelCtrl.refueling.amount / refuelCtrl.refueling.price | number:3}} L</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="text-center mTop10">Introduzca su PIN</h2>
+        <div class="refulePinContent text-center clearfix">
+            <div ng-repeat="item in [1,2,3,4] track by $index" ng-class="{'activePin': refuelCtrl.refueling.userPin.length > $index}"></div>
+        </div>
+
+        <ion-numeric-keyboard style="bottom: {{refuelPinCtrl.refuelHeaderheight}}px" id="numericKeyboard" on-key-press="refuelPinCtrl.onKeyPress" on-delete-press="refuelPinCtrl.onDelete"></ion-numeric-keyboard>
+    </ion-content>
+
+</ion-view>

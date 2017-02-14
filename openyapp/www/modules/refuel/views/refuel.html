@@ -1,0 +1,14 @@
+<ion-view title="<i class='icon-openy openy'></i> Repostar">
+    <ion-content class="refuelContent">
+        <div class="row row-center padding" id="refuelHeader" ng-class="{'hidden': refuelCtrl.hiddenRefuelHeader}">
+            <div class="col col-33 col-offset-10 text-right logoRefuel"><img ng-src="img/logos_stations/{{refuelCtrl.stationInfo.logoname}}.svg" class="responsive"></div>
+            <div class="col">
+                <h5 class="margin0">{{refuelCtrl.stationInfo.name}}<br>
+                <span class="normal">{{refuelCtrl.stationInfo.address}}</span></h5>
+            </div>
+        </div>
+        <!--<ng-include src="'modules/repostar/views/repostar_select.html'"></ng-include>
+        <ng-include src="'modules/repostar/views/repostar_selected.html'"></ng-include>-->
+        <ion-nav-view></ion-nav-view>
+    </ion-content>
+</ion-view>

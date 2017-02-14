@@ -1,0 +1,26 @@
+<ion-view view-title="<i class='openy icon-settings'></i> Datos de Pago">
+    <ion-content class="padding">
+        <h4 class="openy marginTitle">Para validar la tarjeta “...-{{payment.card.pan}}”, efectuaremos un cargo inferior a 1,5€</h4>
+        <p class="">
+            <button ng-if="!sendCharge" type="button" ng-click="payment.sendChargeChange()" class="fsSBig button no-border button-block button-positive"><strong>Efectuar cargo inferior a 1,5€</strong></button>
+            <button ng-if="sendCharge" disabled type="button" class="fsSBig button no-border button-block button-olive"><strong><i class="icon ion-checkmark-round"></i> Cargo efectuado</strong></button>
+        </p>
+        <div class="mTop20">
+            <p class="text-center" ng-class="{'opacity_50':!sendCharge}"><strong>Introduce el cargo recibido</strong></p>
+            <div class="row row-center">
+                <div class="col text-right paymentDataForm">
+                    <input class="text-right" type="tel" ng-disabled="!sendCharge" ng-model="amount" name="charge_copy" placeholder="€">
+                </div>
+                <div class="col text-right" ng-if="!payment.loading">
+                    <button ng-disabled="!sendCharge" type="button" class="button no-border openy-bg" ng-click="payment.validateCreditCard(amount)"><strong>Validar tarjeta</strong></button>
+                </div>
+                <div class="col text-center" ng-if="payment.loading">
+                    <ion-spinner></ion-spinner>
+                </div>
+            </div>
+            <p class="mTop20 text-right">
+                <button type="button" class="button button-outline button-dark" ng-click="payment.back()">Validar más tarde</button>
+            </p>
+        </div>
+    </ion-content>
+</ion-view>

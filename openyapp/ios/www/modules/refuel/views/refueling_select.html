@@ -1,0 +1,58 @@
+<ion-view title="<i class='icon-refuel openy'></i> Repostar" class="padding">
+    <div class="text-center">
+        <ion-spinner class="openy" ng-if="refuelCtrl.refuelingLoading"></ion-spinner>
+    </div>
+    
+    <div ng-show="!refuelCtrl.refuelingLoading">
+        <div class="selectRefueling">
+            <!--{{refuelCtrl.refueling}}-->
+            <strong>Surtidor</strong>
+            <div class="borderRefueling"></div>
+            <ion-scroll class="selectsRefueling" delegate-handle="pump" direction="x" style="width:100%;">
+                <button type="button" class=" refuelBtn button-clear button" ng-href="#" ng-class="{'active' : pump.id == refuelCtrl.refueling.pump, 'disabled': refuelCtrl.finish}" ng-repeat="pump in refuelCtrl.pumps" ng-click="refuelCtrl.selectRefueling('pump', pump, $index);">{{pump.id}}</button>
+            </ion-scroll>
+            <div class="borderRefueling"></div>
+        </div>
+        <div class="selectRefueling selectRefuelingFuel">
+            <div class="clearfix overflow">
+                <div class="pull-left"><strong>Combustible</strong></div>
+                <div class="pull-right refuelingDiscount" ng-if="refuelCtrl.promotion.discount && !refuelCtrl.refueling.full" class="refuelingDiscount">
+                    DESCUENTO<span ng-if="refuelCtrl.promotion.discountPercentage"> {{refuelCtrl.promotion.discountPercentage * 100}}%</span><span ng-if="refuelCtrl.promotion.discountPerUnit">/lt {{refuelCtrl.promotion.discountPerUnit | currency:'€'}}</span>
+                </div>
+            </div>
+            
+            <div class="borderRefueling"></div>
+            <ion-scroll class="selectsRefueling selectsRefuelingFueltype" delegate-handle="fueltype" direction="x" style="width:100%;">
+                <button type="button" class="refuelBtn button-clear button" ng-href="#" ng-class="{'active' : fueltype == refuelCtrl.refueling.fueltype, 'disabled': !refuelCtrl.refueling.pump || refuelCtrl.finish}" ng-repeat="fueltype in refuelCtrl.fueltypes" ng-click="refuelCtrl.selectRefueling('fueltype', fueltype, $index);"><i class="icon-{{fueltype}}"></i></button>
+            </ion-scroll>
+            <div class="borderRefueling"></div>
+            <div class="refuelingMoreInfo text-center" ng-if="refuelCtrl.refueling.fueltype">{{refuelCtrl.refueling.price | number:3}}€/L</div>
+        </div>
+
+        <div class="selectRefueling mBottom0">
+            <div class="clearfix overflow">
+                <div class="pull-left"><strong>Precio</strong></div>
+                <div class="pull-right refuelingDiscount" ng-if="refuelCtrl.promotion.discount && !refuelCtrl.refueling.full">
+                    AHORRAS {{refuelCtrl.promotion.discount | currency:'€'}}
+                </div>
+            </div>
+            <div class="borderRefueling"></div>
+            <ion-scroll class="selectsRefueling" delegate-handle="amount" direction="x" style="width:100%;">
+                <button type="button" class="refuelBtn button-clear button" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount && !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}" ng-repeat="amount in refuelCtrl.amounts" ng-click="refuelCtrl.selectRefueling('amount', amount, $index);">{{amount}}
+                    <p class="fsSSmall mTop0">€</p>
+                </button>
+            </ion-scroll>
+            <div class="borderRefueling"></div>
+            <div class="refuelingMoreInfo"><span ng-if="refuelCtrl.refueling.amount && !refuelCtrl.refueling.full && refuelCtrl.promotion.promType != 'discount'">{{refuelCtrl.refueling.amount / refuelCtrl.refueling.price | number:3}}L</span><span ng-if="refuelCtrl.promotion.promType == 'discount' && !refuelCtrl.refueling.full">{{refuelCtrl.promotion.promoUnits | number:3}}L</span></div>
+        </div>
+
+
+        <ion-toggle ng-disabled="refuelCtrl.finish" ng-model="refuelCtrl.refueling.full" class="text-right noBorder greyOpeny-bg" ng-class="{'opacity_50': refuelCtrl.finish}" toggle-class="toggle-openy"><strong>Lleno</strong></ion-toggle>
+        <div>
+            <div class="btnSendContainer">
+                <ion-spinner icon="bubbles" ng-if="refuelCtrl.loading" class="spinner-light"></ion-spinner>
+                <button type="button" ng-disabled="!refuelCtrl.refueling.amount && !refuelCtrl.refueling.full" class="noBorder btnSend button openy-bg" ng-class="{'activated': refuelCtrl.refueling.amount && refuelCtrl.refueling.full}" style="width:55%;">Activar&nbsp;surtidor</button>
+            </div>
+        </div>
+    </div>
+</ion-view>

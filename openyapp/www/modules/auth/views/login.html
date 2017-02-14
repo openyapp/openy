@@ -1,0 +1,53 @@
+<ion-view view-title="<i class='openy icon-preferencias'></i> Iniciar sesión">
+    <ion-content class="padding">
+        <form role="form" class="loginForm" name="loginForm" novalidate="on" ng-submit="login(loginForm);" autocomplete="off">
+            <label class="" ng-class="{ 'has-error' : loginForm.email.$invalid && (loginForm.email.$touched || loginForm.$submitted)}">
+                <span class="input-label">Correo electrónico</span>
+                <input type="email" required ng-model="data.email" name="email" placeholder="Email" tabindex="1" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/">
+            </label>
+            <div class="form-errors" ng-show="loginForm.email.$invalid && (loginForm.email.$touched || loginForm.$submitted)" ng-messages="loginForm.email.$error">
+                <div class="form-error assertive padding" ng-message="required">Falta este campo.</div>
+                <div class="form-error assertive padding" ng-message="email">Debe contener un email válido.</div>
+            </div>
+            <label class="" ng-class="{ 'has-error' : loginForm.password.$invalid && (loginForm.password.$touched || loginForm.$submitted)}">
+                <span class="input-label">Contraseña</span>
+                <input type="password" required minlength="8" ng-model="data.password" name="password" placeholder="Contraseña" tabindex="2">
+            </label>
+            <div class="form-errors" ng-show="loginForm.password.$invalid && (loginForm.password.$touched || loginForm.$submitted)" ng-messages="loginForm.password.$error">
+                <div class="form-error assertive padding" ng-message="required">Falta este campo.</div>
+                <div class="form-error assertive padding" ng-message="minlength">Mínimo 8 carateres.</div>
+            </div>
+            <div class="" ng-show="flash.length && loginForm.$pristine && loginForm.$pristine" {{flash}}>
+                <div class="form-error assertive padding" ng-repeat="errorItem in flash track by $index">
+                    <div>{{errorItem}}</div>
+                </div>
+            </div>
+            <div class="row row-center mTop10">
+                <div class="col col-80 fsSbig"><strong>Mantener sesión iniciada</strong></div>
+                <div class="col text-right">
+                    <label class="toggle toggle-balanced">
+                        <input type="checkbox" ng-model="data.keepSession">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div>
+                <div class="padding text-right">
+                    <button ng-if="!loading" type="submit" class="button openy-bg noBorder" tabindex="3"><strong>Iniciar sesión</strong></button>
+                    <div ng-if="loading" class="text-center">
+                        <ion-spinner></ion-spinner>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <hr>
+        <div class="row row-center">
+            <div class="col"><strong>¿No tienes cuenta?</strong></div>
+            <div class="col text-right">
+                <button class="button button-outline button-dark" ui-sref="app.register">Crear cuenta</button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

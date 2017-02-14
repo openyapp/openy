@@ -1,0 +1,119 @@
+<style>
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+</style>
+
+<?php 
+$form = $this->form;
+$form->setAttribute('action', $this->url(
+    'admin/default',
+    array(
+        'action'     => 'add',
+        'controller' => 'student'
+    )
+));
+$form->prepare();
+$form->setAttributes(array(
+//     'action' => '/someurl',
+//     'method' => 'post',
+    'class'  => 'form-signin'
+));
+
+// echo $this->form()->openTag($form);
+// echo $this->formCollection($form);
+// echo $this->form()->closeTag();
+
+?>
+<hr/>
+<hr/>
+<?php echo $this->form()->openTag($form) ?>
+<?php //echo $this->formCollection($form);?>
+    
+    
+    
+    <?php if ($this->redirect): ?>
+        <input type="hidden" name="redirect" value="<?php echo $this->escapeHtml($this->redirect) ?>" />
+    <?php endif ?>
+
+    <h2 class="form-signin-heading openy-white">Please sign in</h2>
+    	<?php
+			$this->flashMessenger()
+					->setMessageOpenFormat('<div%s>')
+					->setMessageCloseString('</div>');			
+			echo $this->flashMessenger()->render('error', array('alert', 'alert-dismissable', 'alert-danger'));
+			echo $this->flashMessenger()->render('info', array('alert', 'alert-dismissable', 'alert-info'));
+			echo $this->flashMessenger()->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
+			echo $this->flashMessenger()->render('success', array('alert', 'alert-dismissable', 'alert-success'));
+		?>							
+	
+	<?php 
+	foreach ($form as $element) 
+	{
+// 	    \Zend\Debug\Debug::dump($element->getLabel());
+// 	    echo $this->formLabel($element);
+        echo '<label for="'.$element->getLabel().'">'.$element->getLabel().'</label>';
+        echo $this->formElement($element);        
+        echo $this->formElementErrors($element);
+        echo '<br/>';
+    }   
+    ?>
+
+<?php /*?>
+	<label for="inputEmail">Absentid</label>
+    <?php echo $this->formElement($form->get('absentid')) ?>
+        <br/>
+    <label for="inputEmail">Name</label>
+    <?php echo $this->formElement($form->get('name')) ?>
+        <br/>
+    <label for="inputPassword">Gender</label>
+    <?php echo $this->formElement($form->get('gender')) ?>
+        <br/>
+    <label for="inputPassword">Class</label>
+    <?php echo $this->formElement($form->get('class')) ?>
+         <br/>  
+    <?php echo $this->formElement($form->get('submit')) ?><br/>
+<?php */?>
+
+ <br/> 
+<input type="submit" name="submit" class="btn btn-lg btn-primary btn-block" value="Submit">
+
+<?php echo $this->form()->closeTag() ?>

@@ -1,0 +1,16 @@
+<script src="/wss/client/lib/coffeescript/jsmaker.php?f=client.coffee"></script>
+<h1>Shiny WSS Demo Application</h1>
+<span id="status" class="offline">offline</span>
+
+<p>File Content: <span id="clientCount"></span></p>
+
+<h2>Send Text Frame</h2>
+<input id="action" placeholder="action" type="text" />
+<input id="data" placeholder="data" type="text" />
+<button id="send">Send Text</button>
+
+<h2>Send Binary Frame</h2>
+<form name="binaryFrame" action="#">
+	<input type="file" name="file" id="file">
+	<button id="sendfile">Send Binary</button>
+</form>

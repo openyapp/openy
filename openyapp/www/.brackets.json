@@ -1,0 +1,8 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/home/antelo/phonegap/gasolineras/www/modules/repostar/repostar.controller.js",
+        "/home/antelo/phonegap/gasolineras/www/modules/repostar/repostar.service.js",
+        "/home/antelo/phonegap/gasolineras/www/js/services.js",
+        "/home/antelo/phonegap/gasolineras/www/modules/auth/auth.service.js"
+    ]
+}

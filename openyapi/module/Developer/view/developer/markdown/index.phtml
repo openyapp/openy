@@ -1,0 +1,32 @@
+<strong>Module:</strong>        Developer &raquo;
+<strong>Controller:</strong>    Markdown &raquo;
+<strong>Action:</strong>        index
+
+<br/>
+<br/>
+<div class="collapse navbar-collapse">
+	<h1>Index of documents</h1>	 
+	<?php
+		// render only the 'Community' menu
+		$community = $this->navigation('navigation')
+				->findOneByLabel('Docs')
+		;
+		$options = array(
+		    'ulClass'          => 'nav navbar-nav',
+		    'indent'           => 16,
+		    'minDepth'         => null,
+		    'maxDepth'         => 3,
+		    'renderParents'    => true
+		);
+		echo $this->navigation()
+		          ->menu()
+		          ->renderMenu($community, $options);
+	?>
+</div>
+
+<div class="container">
+<?
+ 	if(isset($this->data))
+ 		echo $this->markdown($this->data); 
+?>
+</div>

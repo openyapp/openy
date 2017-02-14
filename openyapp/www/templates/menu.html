@@ -1,0 +1,53 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-grey">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <button class="button button-openy button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view></ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left" class="grey-bg">
+        <ion-content>
+            <h1 class="title white" ng-if="myUser" menu-close ng-class="{'mBottom20': myUser && myUser.validated}">
+                <button class="button button-clear" ui-sref="logout"><i class="icon-on openy"></i></button> <span ui-sref="{{myUser.validated ? 'app.settings' : 'app.validate'}}">Hola {{myUser.first_name}}</span>
+            </h1>
+            <h1 class="title white" ng-if="!myUser" menu-close ui-sref="app.login"><button class="button button-clear"><i class="icon-on"></i></button>  Iniciar sesión</h1>
+            <button ng-if="myUser && !(myInvoice && myCard)" menu-close class="button button-small button-icon icon-close"></button>
+            <button ng-if="myUser && myInvoice && myCard" menu-close class="button button-small button-icon ion-ios-checkmark"></button>
+            <div class="grey-bg margin-left-52" ng-if="!myUser">
+                <button class="button button-clear btn-clear grey-middle" menu-close ui-sref="app.register"><strong >Regístrate</strong></button>
+            </div>
+            <div class="grey-bg margin-left-52" ng-if="myUser && !myUser.validated">
+                <button class="button button-clear btn-clear grey-middle" menu-close ui-sref="app.validate"><strong>Cuenta sin validar</strong></button>
+            </div>
+            <ion-list>
+                <ion-item menu-close ui-sref="app.refuel.select">
+                    <i class="icon-refuel"></i> Repostar
+                </ion-item>
+                <ion-item menu-close ui-sref="app.stations">
+                    <i class="icon-stations"></i> Gasolineras
+                </ion-item>
+                <ion-item menu-close ui-sref="app.bills">
+                    <i class="icon-bills"></i> Recibos
+                </ion-item>
+                <ion-item menu-close ui-sref="app.share">
+                    <i class="icon-invite"></i> Invitar amigos
+                </ion-item>
+                <ion-item menu-close ui-sref="app.settings" ng-if="myUser">
+                    <i class="icon-settings"></i> Preferencias
+                </ion-item>
+                <ion-item menu-close ui-sref="app.login" ng-if="!myUser">
+                     <i class="icon-settings"></i> Preferencias
+                </ion-item>
+                <ion-item menu-close ui-sref="app.help_menu">
+                    <i class="icon-help"></i> Ayuda
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

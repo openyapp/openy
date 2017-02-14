@@ -1,0 +1,58 @@
+<ion-view>
+    <ion-content class="padding text-center">
+        <h3>Cambiar teléfono</h3>
+        <form class="profileDataForm" name="phoneForm" ng-submit="phoneCtrl.changePhone(phoneForm);" novalidate ng-show="phoneCtrl.sendForm">
+            <div class="list">
+                <label class="item item-input item-text-wrap noBorder noBackground">
+                    <div class="row">
+                        <div class="col"><span>Nuevo número de teléfono</span></div>
+                        <div class="col">
+                            <input required type="tel" ng-model="phoneCtrl.phone.number" name="phone" class="white-bg" minlength="9">
+                        </div>
+                    </div>
+                </label>
+                <div class="form-errors" ng-show="phoneForm.phone.$invalid && (phoneForm.phone.$touched || phoneForm.$submitted)" ng-messages="phoneForm.phone.$error">
+                    <div class="form-error assertive padding" ng-show="phoneForm.phone.$error.required">Falta este campo.</div>
+                    <div class="form-error assertive padding" ng-show="phoneForm.phone.$error.minlength">Mínimo 9 carateres.</div>
+                </div>
+            </div>
+            <div class="mTop20">
+                <div ng-if="phoneForm.loading" class="text-center">
+                    <ion-spinner></ion-spinner>
+                </div>
+                <button class="button" ng-if="!phoneForm.loading"><i class="icon ion-checkmark"></i> <strong>Cambiar</strong></button>
+            </div>
+        </form>
+        <div ng-show="!phoneCtrl.sendForm">
+            <p>Te hemos enviado un sms gratuito con tu código de verificación al {{phoneCtrl.phone.number}}</p>
+            <form class="profileDataForm" name="phoneCodeForm" ng-submit="phoneCtrl.sendCode(phoneCodeForm);" novalidate>
+                <p class="text-left">
+                    <button type="button" class="button button-clear button-small" ng-click="phoneCtrl.back()">No es mi teléfono</button>
+                </p>
+                <div class="list">
+                    <label class="item item-input item-text-wrap noBorder noBackground">
+                        <div class="row">
+                            <div class="col"><span>Código de validación</span></div>
+                            <div class="col">
+                                <input required type="tel" ng-model="phoneCtrl.phone.code" name="code" class="white-bg">
+                            </div>
+                        </div>
+                    </label>
+                    <div class="form-errors" ng-show="phoneCodeForm.code.$invalid && (phoneCodeForm.code.$touched || phoneCodeForm.$submitted)" ng-messages="phoneCodeForm.code.$error">
+                        <div class="form-error assertive padding" ng-show="phoneCodeForm.code.$error.required">Falta este campo.</div>
+                    </div>
+                </div>
+                <p class="text-left">
+                    <button type="button" class="button button-clear button-small" ng-click="phoneCtrl.changePhone(phoneForm)">Reenviar código</button>
+                </p>
+                <div class="mTop20">
+                    <div ng-if="phoneForm.loading" class="text-center">
+                        <ion-spinner></ion-spinner>
+                    </div>
+                    <button class="button" ng-if="!phoneForm.loading"><i class="icon ion-checkmark"></i> <strong>Validar</strong></button>
+                </div>
+            </form>
+        </div>
+
+    </ion-content>
+</ion-view>

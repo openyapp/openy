@@ -1,0 +1,25 @@
+{
+  "name": "psyao/mailtester",
+  "description": "Test emails in Codeception tests",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Steve Aguet",
+      "email": "steve.aguet@elysion.ch"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "codeception/codeception": "~2.0",
+    "guzzlehttp/guzzle": "~4.0"
+  },
+  "autoload": {
+  	"psr-0" : {
+            "Codeception" : "src/"
+        },
+    "psr-4": {
+      "Codeception\\Module\\": "src/"
+    }
+  },
+  "minimum-stability": "stable"
+}

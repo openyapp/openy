@@ -1,0 +1,28 @@
+<ion-view view-title="Soporte técnico">
+    <ion-content class="padding">
+        <p class="gray-light">Si algo ha fallado, lo sentimos pero no te preocupes. Estamos aqui para ayudarte!</p>
+        <form class="helpDeskForm mTop30" novalidate name="helpDeskForm" ng-submit="help.send(helpDeskForm);">
+            <label class="" ng-class="{ 'has-error' : helpDeskForm.email.$invalid && (helpDeskForm.email.$touched || helpDeskForm.$submitted)}">
+                <span>Correo electrónico</span>
+                <input type="email" required ng-model="help.email" name="email" placeholder="Email" tabindex="1" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/">
+            </label>
+            <div class="form-errors" ng-show="helpDeskForm.email.$invalid && (helpDeskForm.email.$touched || helpDeskForm.$submitted)" ng-messages="helpDeskForm.email.$error">
+                <div class="form-error assertive padding" ng-message="required">Falta este campo.</div>
+                <div class="form-error assertive padding" ng-message="email">Debe contener un email válido.</div>
+            </div>
+            <label class="" ng-class="{ 'has-error' : helpDeskForm.comment.$invalid && (helpDeskForm.comment.$touched || helpDeskForm.$submitted)}">
+                <span>Incidencia</span>
+                <textarea required rows="4" ng-model="help.comment" tabindex="1" name="comment"></textarea>
+            </label>
+            <div class="form-errors" ng-show="helpDeskForm.comment.$invalid && (helpDeskForm.comment.$touched || helpDeskForm.$submitted)" ng-messages="helpDeskForm.comment.$error">
+                <div class="form-error assertive padding" ng-message="required">Falta este campo.</div>
+            </div>
+            <div class="mTop20 text-right" ng-if="!help.loading">
+                <button class="noBorder button openy-bg"><strong>Enviar</strong></button>
+            </div>
+            <div ng-if="help.loading" class="text-center">
+                <ion-spinner></ion-spinner>
+            </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,125 @@
+/*body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}*/
+
+.zf-green {
+    color: #68b604;
+}
+
+.btn-success {
+  background-color: #57a900;
+  background-image: -moz-linear-gradient(top, #70d900, #57a900);
+  background-image: -ms-linear-gradient(top, #70d900, #57a900);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#70d900), to(#57a900));
+  background-image: -webkit-linear-gradient(top, #70d900, #57a900);
+  background-image: -o-linear-gradient(top, #70d900, #57a900);
+  background-image: linear-gradient(top, #70d900, #57a900);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#70d900', endColorstr='#57a900', GradientType=0);
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success.active,
+.btn-success.disabled,
+.btn-success[disabled] {
+  background-color: #57a900;
+}
+
+.btn-success:active, .btn-success.active {
+  background-color: #57a900;
+}
+
+div.container a.brand {
+    background: url("../img/zf2-logo.png") no-repeat scroll 0 10px transparent;
+    margin-left: 0;
+    padding: 8px 20px 12px 40px;
+}
+
+.openy-orange
+{
+	color: #fe9d1a;
+}
+
+.openy-white
+{
+	color: #fff;
+}
+
+.openy-bold
+{
+	font-weight: 700;
+}
+
+.navbar-brand
+{
+	font-size: 30px;
+	color: #fe9d1a !important;
+    font-weight: 700;
+}
+
+.sidebar .nav-second-level li a {
+    padding-left: 37px;
+}
+
+.doc-image
+{
+	width: 250px;
+}
+.doc-800-image
+{
+	width: 800px !important;
+}
+
+.doc-600-image
+{
+	width: 600px;
+}
+
+.bs-docs-nav {
+
+  background-color: transparent !important;
+
+}
+
+
+.bs-docs-section > table{
+  border: solid 1px #aaa;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+.bs-docs-section > table th, #bs-docs > table td {
+  border: solid 1px #aaa;
+  background-color: #eee;
+  padding: 5px 12px;
+  font-weight: normal;
+}
+/*
+table
+{
+
+  border: 1px solid #ddd;
+}
+table thead>tr>th {
+  border-bottom-width: 2px;
+	border: 1px solid #ddd;
+	  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+	padding: 8px;
+  line-height: 1.42857143;
+}
+table tbody>tr>td {
+  border-bottom-width: 2px;
+	border: 1px solid #ddd;
+	  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+	padding: 8px;
+  line-height: 1.42857143;
+}
+th {
+  text-align: left;
+	font-weight: bold;
+	  display: table-cell;
+}
+*/

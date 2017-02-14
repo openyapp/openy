@@ -1,0 +1,100 @@
+<ion-view view-title="<i class='openy icon-settings'></i> Datos de Pago">
+    <ion-content>
+        <div ng-repeat="creditCard in paymentCtrl.creditCards"class="padding"  ng-if="!paymentCtrl.showForm">
+            <div class="creditCardBox mTop20">
+                <div>
+                    <input ng-value="creditCard.cardusername" disabled>
+                </div>
+                <div>
+                    <input ng-value="'XXXX XXXX XXXX' + creditCard.pan"  disabled>
+                </div>
+                <div class="row row-center mBottom20">
+                    <div class="col col-50 text-center">Válida hasta:</div>
+                    <div class="col selectMonth">
+                        <input ng-value="creditCard.expires | limitTo: 2"  disabled>
+                    </div>
+                    <div class="col">
+                        <input ng-value="creditCard.expires | limitTo: -2"  disabled>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col">
+                        <button class="button icon-left ion-android-star-outline button-clear openy" ng-if="creditCard.favorite"><span class="white">Tarjeta por defecto</span></button>
+                        <button class="button icon-left ion-android-star-outline button-clear" ng-if="!creditCard.favorite" ng-click="paymentCtrl.addFavorite(creditCard.idcreditcard, $index)"><span class="white">Tarjeta por defecto</span></button>
+                    </div>
+                    <div class="col">
+                        <i class="icon ion-ios-checkmark settingListTrue" ng-if="creditCard.validated"></i>
+                        <button type="submit" class="button icon-left ion-alert openy-bg" ng-if="!creditCard.validated" ng-click="paymentCtrl.validateCard(creditCard);">Finalizar validación</button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <button class="button  button-clear button-assertive" ng-click="paymentCtrl.deleteCard(creditCard.idcreditcard, $index)">Eliminar tarjeta</button>
+            </div>
+        </div>
+        <div class="list listSettings" ng-click="paymentCtrl.setShowForm()" ng-if="!paymentCtrl.showForm">
+            <div class="item item-button-right">
+                Añadir nueva tarjeta
+                <button class="button button-dark button-clear">
+                    <i class="icon ion-ios-arrow-forward"></i>
+                </button>
+            </div>
+        </div>
+
+        <p class="gray-light padding" ng-if="paymentCtrl.totalCards === 0">A continuación te pedimos los datos de tu tarjeta, estos datos se mantendrán seguros y se utilizarán para que puedas pagar tu repostaje con el móvil.</p>
+
+        <form name="paymentDataForm" class="paymentDataForm padding" ng-submit="paymentCtrl.sendPaymentDataForm(paymentDataForm)" novalidate ng-if="paymentCtrl.showForm">
+            <div class="creditCardBox mTop20">
+                <div>
+                    <input ng-model="paymentCtrl.card.name" name="name" placeholder="Nombre del titular" required>
+                    <div class="form-errors" ng-show="paymentDataForm.name.$invalid && (paymentDataForm.name.$touched || paymentDataForm.$submitted)">
+                        <div class="form-error assertive padding" ng-show="paymentDataForm.name.$error.required">Falta el nombre.</div>
+                    </div>
+                </div>
+                <div>
+                    <input type="number" ng-model="paymentCtrl.card.number" name="number" placeholder="Número de la tarjeta" maxlength="16" minlength="16" required>
+                    <div class="form-errors" ng-show="paymentDataForm.number.$invalid && (paymentDataForm.number.$touched || paymentDataForm.$submitted)">
+                        <div class="form-error assertive padding">El número debe ser de 16 dígitos.</div>
+                    </div>
+                </div>
+                <div class="row row-center">
+                    <div class="col col-50 text-center">Válida hasta:</div>
+                    <div class="col selectMonth">
+                        <select ng-model="paymentCtrl.card.month" name="month" ng-options="month as month for month in paymentCtrl.months">
+                            <option value="">Mes</option>
+                        </select>
+
+                    </div>
+                    <div class="col">
+                        <select ng-model="paymentCtrl.card.year" name="year" ng-options="year as year for year in paymentCtrl.years">
+                            <option value="">Año</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-errors text-right" ng-show="!paymentCtrl.card.month && (paymentDataForm.month.$touched || paymentDataForm.$submitted)">
+                    <div class="form-error assertive padding">Falta el mes.</div>
+                </div>
+                <div class="form-errors text-right" ng-show="!paymentCtrl.card.year && (paymentDataForm.year.$touched || paymentDataForm.$submitted)">
+                    <div class="form-error assertive padding">Falta el año.</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-80 mTop10 text-right"><strong>Cvv:</strong></div>
+                <div class="col">
+                    <input type="number" ng-model="paymentCtrl.card.cvv" name="cvv" maxlength="3" minlength="3" placeholder="***" required>
+                </div>
+            </div>
+            <div class="form-errors text-right" ng-show="paymentDataForm.cvv.$invalid && (paymentDataForm.cvv.$touched || paymentDataForm.$submitted)">
+                <div class="form-error assertive padding">El número debe ser de 3 dígitos.</div>
+            </div>
+            <div class="text-center mTop20" ng-if="paymentCtrl.loading">
+                <ion-spinner></ion-spinner>
+            </div>
+            <div class="text-right mTop20" ng-if="!paymentCtrl.loading">
+                <button class="sendPaymentDataForm button" ng-click="paymentCtrl.showForm = false" ng-if="paymentCtrl.totalCards !== 0">Cancelar</button>
+                <button type="submit" class="sendPaymentDataForm button openy-bg"><strong>Agregar tarjeta</strong></button>
+            </div>
+        </form>
+
+    </ion-content>
+</ion-view>

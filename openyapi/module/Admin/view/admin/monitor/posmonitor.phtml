@@ -1,0 +1,25 @@
+<script src="/wss/client/lib/coffeescript/jsmaker.php?f=pumps.coffee"></script>
+<h1>Pumps Status</h1>
+<div id="main">
+	<div id="clientList" 	style="padding-right:150px; width:50%">
+		<h2>Station:</h2>
+		<span id="status" class="offline">disconnected</span>
+		<span id="button" class="connect">Connect</span>
+		<span id="button" class="disconnect" >Disconnect</span>
+	</div>
+	
+	<div id="serverInfo">
+		<h2>GasStation Info:</h2>
+		<p>Connected Clients: <span id="clientCount"></span></p>
+		<p>Limit Clients: <span id="maxClients"></span></p>
+		<p>Limit Connections/IP: <span id="maxConnections"></span></p>
+		<p>Limit Requetes/Min: <span id="maxRequetsPerMinute"></span></p>				
+	</div>
+	
+	<div class="clearer"></div>
+	
+	<div id="console">
+		<h2>Gas Station State:</h2>
+		<div id="state"></div>
+	</div>
+</div>	

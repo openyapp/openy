@@ -1,0 +1,60 @@
+<strong>Module:</strong>        Developer &raquo;
+<strong>Controller:</strong>    Debug &raquo;
+<strong>Action:</strong>        index
+
+<br/>
+<br/>
+<div class="collapse navbar-collapse">
+<?php
+$internal = $this->navigation('navigation')->findOneByLabel('Debug');
+    echo $this->navigation('navigation')
+           ->menu()
+           ->setMinDepth(2)
+           ->setMaxDepth(2)
+           ->setUlClass('nav nav-tabs')
+           ->renderSubMenu(null, 'sidebar', 4);
+ ?>  
+</div>
+
+<div class="container">
+<?
+ 	if(isset($this->data))
+ 		echo $this->markdown($this->data); 
+?>
+</div>
+<a  href="http:///wss/client/pumps.html" target="_blank">
+[Open Modal]
+</a>
+
+<?php 
+/*
+<a data-toggle="modal" data-target="#myStationModal" href="#">
+[Open Modal]
+</a>
+			
+<div class="modal fade" id="myStationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-lg">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				        <h4 class="modal-title" id="myModalLabel">Titulo</h4>
+				      </div>
+				      <div class="modal-body">
+<?php 
+echo "<pre>";
+print_r($route);
+echo "</pre>";
+?>
+
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+		
+*/		
+?>		
+		
+		

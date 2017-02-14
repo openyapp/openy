@@ -1,0 +1,48 @@
+<?php
+
+namespace Openy\Service;
+
+use Openy\Interfaces\ServiceInterface;
+use Zend\Db\Adapter\AdapterInterface;
+use Zend\Stdlib\AbstractOptions;
+//use Openy\Model\Preference\PreferenceMapper;
+use Openy\V1\Rest\Preference\PreferenceMapper;
+
+class Preferences implements ServiceInterface
+{
+
+    protected $adapterMaster;
+    protected $adapterSlave;
+    protected $options;      
+    protected $currentUser;
+
+
+	public function __construct(AdapterInterface $adapterMaster, AdapterInterface $adapterSlave, AbstractOptions $options, $currentUser)
+	{
+        $this->adapterMaster    = $adapterMaster;
+        $this->adapterSlave     = $adapterSlave;
+        $this->options		    = $options;    
+        $this->currentUser      = $currentUser;        
+	}	
+
+	private function getMapperInstance(){
+		return new PreferenceMapper($this->adapterMaster, $this->adapterSlave, $this->options, $this->currentUser);
+	}
+
+	public function getCurrentUserPreferences(PreferenceMapper $mapper = null){
+		$mapper = $mapper ? : $this->getMapperInstance();
+		$iduser = $this->currentUser->getUser('iduser');
+		return $mapper->fetch($iduser);
+	}
+
+	public function getMapper($creditcardService){		
+		$mapper = $this->getMapperInstance();
+		$userPrefs  = $this->getCurrentUserPreferences($mapper);		
+		$creditcard = $creditcardService->getMapper($userPrefs);
+		$mapper->setCreditCard($creditcard);
+		return $mapper;
+	}
+
+
+
+}

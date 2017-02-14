@@ -1,0 +1,19 @@
+<ion-modal-view ng-controller="refuelModalWaitController as refuelModalWaitCtlr">
+    <ion-header-bar>       
+        <button type="button" class="button button-clear button-openy" ng-click="refuelModalWaitCtlr.closeModalWait()"><i class="icon ion-close-round"></i></button>
+    </ion-header-bar>
+    <ion-content>
+        <div class="text-center waitRefuel">
+            <h1 class="text-center openy raiseRefuelingIcon"><i class="icon-hose"></i></h1>
+            <div stye="position:relative">
+                <h3 class="text-center">
+                    Surtidor abierto<br>
+                    Desculege la manguera
+                </h3>
+                <div class="mTop20">
+                    <pomodoro seconds="120"></pomodoro>                    
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

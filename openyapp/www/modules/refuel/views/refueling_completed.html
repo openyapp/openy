@@ -1,0 +1,63 @@
+<ion-view title="<i class='icon-refuel openy'></i> Repostar" class="padding">
+    <div class="bill mTop20">
+        <ul class="list">            
+            <li class="item row">
+                <div class="col">
+                    Fecha
+                </div>                             
+                <div class="col">
+                    {{refuelCompletedCtrl.receipt.timestamp | date : 'dd-MM-yyyy'}}<br>
+                    {{refuelCompletedCtrl.receipt.timestamp | date : 'HH:mm'}}                    
+                </div>
+            </li>
+            <li class="item row">
+               <div class="col">
+                    €/l
+                </div>
+                <div class="col">
+                    {{refuelCompletedCtrl.receipt.Precio | currency:'€':3}}
+                </div>
+            </li>
+            <li class="item row">
+                <div class="col">
+                    Litros
+                </div>
+                <div class="col">
+                    {{refuelCompletedCtrl.receipt.Litros | number:2}}
+                </div>
+            </li>
+            <li class="item row">
+               <div class="col">
+                    Precio
+                </div>
+                <div class="col">
+                    {{refuelCompletedCtrl.receipt.Total - refuelCompletedCtrl.receipt.IVA | currency}}
+                </div>
+            </li>
+            <li class="item row">
+               <div class="col">
+                    IVA
+                </div>
+                <div class="col">
+                    {{refuelCompletedCtrl.receipt.IVA | currency}}
+                </div>
+            </li>
+            <li class="item row" ng-if="refuelCompletedCtrl.receipt.Ahorro">
+               <div class="col openy">
+                    Ahorro
+                </div>
+                <div class="col openy">
+                    {{refuelCompletedCtrl.receipt.Ahorro | currency}}
+                </div>
+            </li>
+            <li class="item row">
+               <div class="col">
+                    Total
+                </div>
+                <div class="col">
+                    <strong>{{refuelCompletedCtrl.receipt.Total | currency}}</strong>
+                </div>
+            </li>
+        </ul>
+    </div>    
+</ion-view>

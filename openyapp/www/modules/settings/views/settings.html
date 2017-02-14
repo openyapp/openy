@@ -1,0 +1,63 @@
+<ion-view view-title="<i class='openy icon-settings'></i> Preferencias">
+    <ion-content>
+        <h4 class="text-center openy padding">Completa estos 3 pasos y empieza a utilizar Openy!</h4>
+        <div class="list listSettings">
+            <div class="item item-button-right" ui-sref="app.setting.profile">
+                Cuenta de usuario <i class="icon ion-close-circled settingListFalse" ng-show="!sttngsCtrl.settings.user"></i> <i class="icon ion-ios-checkmark settingListTrue" ng-show="sttngsCtrl.settings.user"></i>
+                <button class="button button-dark button-clear">
+                    <i class="icon ion-ios-arrow-forward"></i>
+                </button>
+            </div>
+            <div class="item item-button-right" ui-sref="app.setting.payment">
+                Datos de Pago <i class="icon ion-close-circled settingListFalse" ng-show="!sttngsCtrl.settings.creditCard"></i> <i class="icon ion-ios-checkmark settingListTrue" ng-show="sttngsCtrl.settings.creditCard"></i>
+                <button class="button button-dark button-clear">
+                    <i class="icon ion-ios-arrow-forward"></i>
+                </button>
+            </div>
+            <div class="item item-button-right" ui-sref="app.setting.invoice">
+                Datos de Facturación <i class="icon ion-close-circled settingListFalse" ng-show="!sttngsCtrl.settings.invoice"></i> <i class="icon ion-ios-checkmark settingListTrue" ng-show="sttngsCtrl.settings.invoice"></i>
+                <button class="button button-dark button-clear">
+                    <i class="icon ion-ios-arrow-forward"></i>
+                </button>
+            </div>
+            <div class="item item-divider">
+                Búsqueda
+            </div>
+            <div class="item distanceSettingsContent">
+                <div class="clearfix">Area de busqueda por defecto: <span class="distanceSettings openy">{{sttngsCtrl.settings.distance}}km</span></div>
+                <div class="row">
+                    <div class="col">5km.</div>
+                    <div class="col text-right">30km.</div>
+                </div>
+                <div class="range range-openy">
+                    <input type="range" ng-model="sttngsCtrl.settings.distance" ng-change="sttngsCtrl.updateDistance();" min="5" max="30">
+                </div>
+            </div>
+            <div class="item item-divider">
+                Seguridad
+            </div>
+            <div class="item item-toggle">
+                Solicitar PIN para el pago
+                <label class="toggle" ui-sref="app.setting.pin">
+                    <input type="checkbox" ng-checked="sttngsCtrl.settings.paymentPin?true:false">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </div>
+            <div class="item item-button-right" ng-if="sttngsCtrl.settings.paymentPin">
+                Pin
+                <button class="button button-dark button-clear" ui-sref="app.setting.pin({edit:true})">
+                    &bull;&bull;&bull;&bull;
+                    <i class="icon ion-ios-arrow-forward"></i>
+                </button>
+            </div>
+            <div  class="text-center" ng-if="sttngsCtrl.loading">
+                <ion-spinner></ion-spinner>
+            </div>
+            <div class="item item-button-right noBorder" ng-click="sttngsCtrl.deletePin();" ng-if="sttngsCtrl.settings.paymentPin && !sttngsCtrl.loading">
+                He olvidado mi pin
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

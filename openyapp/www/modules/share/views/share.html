@@ -1,0 +1,10 @@
+<ion-view view-title="<i class='icon-invite openy'></i> Invitar">
+    <ion-content class="padding shareContent">        
+        <p class="shareTitle">Ayuda a dar a conocer Openy a tus amigos, familiares y colegas!</p>
+        <div class="shareButtons">
+               <button class="button text-left button-block button-{{shareAvailablesApp.class}} white" ng-click="share('{{shareAvailablesApp.id}}')" ng-repeat="shareAvailablesApp in shareAvailablesApps track by $index"><i class="{{shareAvailablesApp.icon}} fsSBig"></i> <strong>Invita por {{shareAvailablesApp.name}}</strong></button>            
+                <button class="button text-left button-block button-gray button-white" ng-click="shareMail()"><i class="icon ion-android-mail"></i> <strong>Invita por mail</strong></button>
+            </div>
+        </div>         
+    </ion-content>
+</ion-view>

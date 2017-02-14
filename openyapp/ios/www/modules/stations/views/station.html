@@ -1,0 +1,55 @@
+<ion-view id="mapContent" view-title="<i class='icon-stations openy'></i> Gasolineras">
+    <ion-nav-buttons side="secondary">
+        
+    </ion-nav-buttons>
+    <ion-content class="has-header" id="">
+        <div class="padding semiWhite-bg text-center text-center" style="" >
+                <div class="openyStatonIcon">
+                    <i class="icon-openy  openy" ng-show="stationInfo.openy != '0'"></i>
+                    <i class="icon-star openy" ng-show="stationInfo.favorite"></i>
+                </div>
+                <img ng-src="img/logos_stations/{{stationInfo.logo}}.svg" class="responsive submenuMapaLogo">
+                <br><strong>{{stationInfo.address}}</strong>
+            </div>
+        <div style="width:100%;height:{{height}}px" id="mapStation">
+            
+        </div>
+        <div class="" id="gasolinerasDiv">
+                <div class="stable-bg">
+                    <div class="row row-center">
+                        <div class="col col-67">
+                            <h2 class="gray-light">                               
+                                <strong>{{stationInfo.distance | number:0}} {{stationInfo.metric}} </strong>
+                            </h2>
+                        </div>
+                        <div class="col">
+                            <h2 class="padding-right text-right">
+                                <button class="button fsSBig button-clear" ng-click="goStationGps(stationInfo)"><span class="icon-navigator"><span class="path1"></span><span class="path2"></span></span></button>
+                            </h2>
+                        </div>
+                        <div class="col">
+                            <h2 class="padding-right text-right">
+                                <button class="button gray-light fsSBig button-clear" ng-class="{'button-openy': stationInfo.favorite}" ng-click="setFavorites(stationInfo)" ><i class="icon-star"></i></button>
+                            </h2>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="padding">
+                        <p><strong>Combustibles disponibles:</strong></p>
+                        <ion-scroll direction="y" style="height:200px">
+                            <div class="row flexWrap mapFuelsContent">
+                                <div class="col col-25 text-center fsSBig" ng-repeat="fuel in stationInfo.fueltypes track by $index">
+                                    <button type="button" class="refuelBtn button-clear button" ng-href="#"><i class="icon-{{fuel.fuelcode}}"></i></button>
+                                    <div class="openy"><strong>{{fuel.price | currency}}/l</strong></div>
+                                </div>
+                            </div>
+                        </ion-scroll>
+                        <div ng-show="stationInfo.openy != '0'" class="">
+                            <hr>
+                            <a nav-direction="forward" ui-sref="app.refuel.select({station: (stationInfo |json)})" class="button noBorder openy-bg button-large button-block"><strong><i class="icon-openy"></i>&nbsp;Repostar&nbsp;con&nbsp;Openy</strong></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </ion-content>
+</ion-view>

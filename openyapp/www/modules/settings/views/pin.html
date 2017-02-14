@@ -1,0 +1,44 @@
+<ion-view view-title="<i class='openy icon-settings'></i> Preferencias" class="text-center">
+    <ion-content class="padding">
+        <h4 class=" openy padding">Introduce tu pin de seguridad</h4>
+        <p ng-if="pinSetCtrl.delete"><strong>Para poder desactivar la validación es necesario introducir el pin actual</strong></p>
+        <form novalidate name="pinForm" ng-submit="pinSetCtrl.savePin(pinForm)" class="invoiceDataForm">
+            <p>
+                <label>Introduzca PIN de seguridad</label>
+                <br>
+                <input required type="password" ng-model="pinSetCtrl.pin" name="pin" minlength="4" maxlength="4" class="col-50 col-offset-25" size="4" ng-pattern="/^([0-9]{4})?$/" ng-change="pinSetCtrl.checkMatchesPin(pinForm);">
+            </p>
+            <div class="form-errors" ng-show="pinForm.pin.$invalid && (pinForm.pin.$touched || pinForm.$submitted)">
+                <div class="form-error assertive padding" ng-show="pinForm.pin.$error.required">Falta el pin.</div>
+                <div class="form-error assertive padding" ng-show="pinForm.pin.$error.minlength || pinForm.pin.$error.maxlength">El pin debe ser de 4 dígitos.</div>
+                <div class="form-error assertive padding" ng-show="pinForm.pin.$error.matches">El pin no coincide.</div>
+                <div class="form-error assertive padding" ng-show="pinForm.pin.$error.pattern">Debe ser numérico.</div>
+            </div>
+            <p ng-if="pinSetCtrl.edit">
+                <label>Nuevo PIN</label>
+                <br>
+                <input required type="password" ng-model="pinSetCtrl.pin_new" name="pin_new" minlength="4" maxlength="4" class="col-50 col-offset-25" size="4" ng-pattern="/^([0-9]{4})?$/">
+            </p>
+            <div class="form-errors" ng-show="pinForm.pin_new.$invalid && (pinForm.pin_new.$touched || pinForm.$submitted)">
+                <div class="form-error assertive padding" ng-show="pinForm.pin_new.$error.required">Falta el pin.</div>
+                <div class="form-error assertive padding" ng-show="pinForm.pin_new.$error.minlength || pinForm.pin_new.$error.maxlength">El pin debe ser de 4 dígitos.</div>
+                <div class="form-error assertive padding" ng-show="pinForm.pin_new.$error.pattern">Debe ser numérico.</div>
+            </div>
+            <p ng-if="!pinSetCtrl.delete">
+                <label>Repetir PIN de seguridad</label>
+                <br>
+                <input required type="password" ng-model="pinSetCtrl.pin_repeat" name="pin_repeat"  minlength="4" maxlength="4" ng-change="pinSetCtrl.checkMatches(pinForm);" class="col-50 col-offset-25" size="4" ng-pattern="/^([0-9]{4})?$/">
+            </p>
+            <div class="form-errors" ng-show="pinForm.pin_repeat.$invalid && (pinForm.pin_repeat.$touched || pinForm.$submitted)">
+                <div class="form-error assertive padding" ng-show="pinForm.pin_repeat.$error.required">Falta el pin.</div>
+                <div class="form-error assertive padding" ng-show="pinForm.pin_repeat.$error.minlength || pinForm.pin_repeat.$error.maxlength">El pin debe ser de 4 dígitos.</div>
+                <div class="form-error assertive padding" ng-show="pinForm.pin_repeat.$error.matches">El pin no coincide.</div>
+                <div class="form-error assertive padding" ng-show="pinForm.pin_repeat.$error.pattern">Debe ser numérico.</div>
+            </div>
+            <div  class="mTop20 text-center">
+                <ion-spinner ng-if="pinSetCtrl.loading"></ion-spinner>
+                <button class="button sendInvoiceDataForm openy-bg" ng-if="!pinSetCtrl.loading"><strong>Enviar</strong></button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

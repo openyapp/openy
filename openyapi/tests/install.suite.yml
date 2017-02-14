@@ -1,0 +1,10 @@
+class_name: InstallTester
+modules:
+    enabled:
+        - Asserts
+        - \Helper\Unit
+        - REST:
+            url: http:///
+            depends: PhpBrowser
+            part: Json
+      

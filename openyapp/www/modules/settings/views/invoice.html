@@ -1,0 +1,99 @@
+<ion-view view-title="<i class='openy icon-settings'></i> Datos de Facturación">
+    <ion-content class="padding">
+        <form novalidate name="invoiceDataForm" ng-submit="invSetCtrl.sendInvoiceDataForm(invoiceDataForm)" class="invoiceDataForm">
+            <p>
+                <label>Nombre / Empresa</label>
+                <br>
+                <input required type="text" ng-model="invSetCtrl.invoiceData.inv_name" tabindex="1" name="inv_name">
+            </p>
+            <div class="form-errors" ng-show="invoiceDataForm.inv_name.$invalid && (invoiceDataForm.inv_name.$touched || invoiceDataForm.$submitted)">
+                <div class="form-error assertive padding" ng-show="invoiceDataForm.inv_name.$error.required">Falta el nombre o empresa.</div>
+            </div>
+            <p>
+                <label>País</label>
+                <br>
+                <select required ng-model="invSetCtrl.invoiceData.inv_country" name="inv_country" tabindex="2">
+                    <option value="Spain">España (+34)</option>
+                    <option value="2">EEUU</option>
+                    <option value="3">UK</option>
+                    <option value="4">Irlanda</option>
+                </select>
+            </p>
+            <div class="form-errors" ng-show="invoiceDataForm.inv_country.$invalid && (invoiceDataForm.inv_country.$touched || invoiceDataForm.$submitted)">
+                <div class="form-error assertive padding" ng-show="invoiceDataForm.inv_country.$error.required">Falta el país.</div>
+            </div>
+            <p>
+                <label>Dirección</label>
+                <br>
+                <input required type="text" ng-model="invSetCtrl.invoiceData.inv_address" name="inv_address" tabindex="4">
+            </p>
+            <div class="form-errors" ng-show="invoiceDataForm.inv_address.$invalid && (invoiceDataForm.inv_address.$touched || invoiceDataForm.$submitted)">
+                <div class="form-error assertive padding" ng-show="invoiceDataForm.inv_address.$error.required">Falta la dirección.</div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label>Población</label>
+                    <br>
+                    <input required type="text" ng-model="invSetCtrl.invoiceData.inv_locality" name="inv_locality" tabindex="5">
+                </div>
+                <div class="col">
+                    <label>Código postal</label>
+                    <br>
+                    <input required type="tel" ng-model="invSetCtrl.invoiceData.inv_postal_code" name="inv_postal_code" tabindex="6">
+                </div>
+            </div>
+            <div class="form-errors" ng-show="invoiceDataForm.inv_locality.$invalid && (invoiceDataForm.inv_locality.$touched || invoiceDataForm.$submitted)">
+                <div class="form-error assertive padding" ng-show="invoiceDataForm.inv_locality.$error.required">Falta la población.</div>
+            </div>
+            <div class="form-errors" ng-show="invoiceDataForm.inv_postal_code.$invalid && (invoiceDataForm.inv_postal_code.$touched || invoiceDataForm.$submitted)">
+                <div class="form-error assertive padding" ng-show="invoiceDataForm.inv_postal_code.$error.required">Falta el código postal.</div>
+            </div>
+        <!--    <p>
+                <label>Provincia</label>
+                <br>
+                <select required ng-disabled="sendedOk" ng-model="invSetCtrl.invoiceData.inv_document_type" name="inv_document_type" tabindex="7">
+                    <option value="1">Madrid</option>
+                    <option value="2">Barcelona</option>
+                    <option value="3">Lugo</option>
+                    <option value="4">Sevilla</option>
+                </select>
+            </p>-->
+            <div>
+                <label>Documento fiscal</label>
+                <br>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <select required ng-model="invSetCtrl.invoiceData.inv_document_type" name="inv_document_type" tabindex="8">
+                        <option value="1">NIF</option>
+                        <option value="2">DNI</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <input required type="text" ng-model="invSetCtrl.invoiceData.inv_document" name="inv_document" tabindex="9">
+                </div>
+            </div>
+            <div class="form-errors" ng-show="invoiceDataForm.inv_document_type.$invalid && (invoiceDataForm.inv_document_type.$touched || invoiceDataForm.$submitted)">
+                <div class="form-error assertive padding" ng-show="invoiceDataForm.inv_document_type.$error.required">Falta el tipo.</div>
+            </div>
+            <div class="form-errors" ng-show="invoiceDataForm.inv_document.$invalid && (invoiceDataForm.inv_document.$touched || invoiceDataForm.$submitted)">
+                <div class="form-error assertive padding" ng-show="invoiceDataForm.inv_document.$error.required">Falta el documento fiscal.</div>
+            </div>
+            <p>
+                <label>Ciclo facturación</label>
+                <br>
+                <select required ng-model="invSetCtrl.invoiceData.inv_cicle" name="inv_cicle" tabindex="10">
+                    <option value="inmediato">inmediato</option>
+                    <option value="mensual">mensual</option>
+                </select>
+            </p>
+            <div class="form-errors" ng-show="invoiceDataForm.inv_cicle.$invalid && (invoiceDataForm.inv_cicle.$touched || invoiceDataForm.$submitted)">
+                <div class="form-error assertive padding" ng-show="invoiceDataForm.inv_cicle.$error.required">Falta el ciclo de facturación.</div>
+            </div>
+            <div  class="mTop20 text-center">
+                <ion-spinner ng-if="invSetCtrl.loading"></ion-spinner>
+                <button class="button sendInvoiceDataForm openy-bg" ng-if="!invSetCtrl.loading"><strong>Enviar</strong></button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

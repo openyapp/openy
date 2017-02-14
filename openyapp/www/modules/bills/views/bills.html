@@ -1,0 +1,94 @@
+<ion-view view-title="<i class='icon-bills openy'></i> Recibos">
+    <ion-content>
+        <div class="text-center mTop20"><ion-spinner ng-if="billsCtrl.loading"></ion-spinner></div>
+        <div ng-if="billsCtrl.bills.receipts.length > 0">
+            <h4 class="text-center billsTitle"><button type="button" ng-disabled="billsCtrl.loadingInvoice || billsCtrl.loadingReceipt || billsCtrl.loading" class="button button-icon icon ion-ios-arrow-back" ng-click="billsCtrl.changeBill('prev')" ng-if="billsCtrl.$indexSlide == 0 && billsCtrl.page > 1"></button> {{billsCtrl.bills.receipts[billsCtrl.$indexSlide].timestamp | date: 'MMMM yyyy'}}<button ng-disabled="billsCtrl.loadingInvoice || billsCtrl.loadingReceipt || billsCtrl.loading" type="button" class="button button-icon icon ion-ios-arrow-forward"  ng-click="billsCtrl.changeBill('next')" ng-if="billsCtrl.$indexSlide == 9 && billsCtrl.bills.total > (billsCtrl.page) * 10"></button></h4>
+            <div class="">
+                <ion-slide-box does-continue="false" show-pager="true" on-slide-changed="billsCtrl.billChanged($index)">
+                    <ion-slide ng-repeat="bill in billsCtrl.bills.receipts track by $index" class="bill">
+
+                        <div class="bill mBottom20">
+                            <ul class="list">
+                                <li class="item row">
+                                    <div class="col">
+                                        Estación
+                                    </div>
+                                    <div class="col">
+                                        <img ng-src="img/logos_stations/{{bill.logo}}.svg" class="responsive mTop10">
+                                    </div>
+                                    <div class="col word-wrap">
+                                        {{bill.name}}
+                                    </div>
+                                </li>
+                                <li class="item row">
+                                    <div class="col">
+                                        Fecha
+                                    </div>
+                                    <div class="col">
+                                        {{bill.timestamp | date : 'dd-MM-yyyy'}}<br>
+                                        {{bill.timestamp | date : 'HH:mm'}}
+                                    </div>
+                                </li>
+                                <li class="item row">
+                                    <div class="col">
+                                        €/l
+                                    </div>
+                                    <div class="col">
+                                        {{bill.Precio | currency}}
+                                    </div>
+                                </li>
+                                <li class="item row">
+                                    <div class="col">
+                                        Litros
+                                    </div>
+                                    <div class="col">
+                                        {{bill.Litros | number:2}}
+                                    </div>
+                                </li>
+                                <li class="item row">
+                                    <div class="col">
+                                        Precio
+                                    </div>
+                                    <div class="col">
+                                        {{bill.Total - bill.IVA | currency}}
+                                    </div>
+                                </li>
+                                <li class="item row">
+                                    <div class="col">
+                                        IVA
+                                    </div>
+                                    <div class="col">
+                                        {{bill.IVA | currency}}
+                                    </div>
+                                </li>
+                                <li class="item row" ng-if="bill.Ahorro">
+                                    <div class="col openy">
+                                        Ahorro
+                                    </div>
+                                    <div class="col openy">
+                                          {{bill.Ahorro | currency}}
+                                    </div>
+                                </li>
+                                <li class="item row">
+                                    <div class="col">
+                                        Total
+                                    </div>
+                                    <div class="col">
+                                        <strong>{{bill.Total | currency}}</strong>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </ion-slide>
+                </ion-slide-box>
+            </div>
+        </div>
+        <div ng-if="!billsCtrl.bills.receipts && !billsCtrl.loading" class="text-center mTop20 fsSBig">
+            <span class="icon ion-alert-circled openy"></span> Aún no tienes recibos
+        </div>
+    </ion-content>
+    <div ng-if="billsCtrl.bills.receipts" class="bar bar-grey bar-footer">
+        <button ng-class="{'ion-ios-upload-outline': !billsCtrl.loadingReceipt}" ng-disabled="billsCtrl.loadingInvoice || billsCtrl.loadingReceipt || billsCtrl.loading" class="button button-icon openy" ng-click="billsCtrl.sendReceipt()"><ion-spinner ng-if="billsCtrl.loadingReceipt"></ion-spinner></button>
+        <button class="button button-icon openy" ng-disabled="billsCtrl.loadingInvoice || billsCtrl.loadingReceipt || billsCtrl.loading" ng-click="billsCtrl.sendInvoice()"><ion-spinner ng-if="billsCtrl.loadingInvoice"></ion-spinner><strong ng-if="!billsCtrl.loadingInvoice">Factura</strong></button>
+    </div>
+</ion-view>

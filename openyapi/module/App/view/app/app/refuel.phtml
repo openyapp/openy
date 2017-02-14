@@ -1,0 +1,169 @@
+<?php
+$title = 'Condiciones de uso';
+$this->headTitle($title);
+?>
+<!-- BEGIN -->
+       
+        
+<div class="scroll" style="-webkit-transform: translate3d(0px, 0px, 0px) scale(1);">
+        <div class="row row-center padding" id="refuelHeader" ng-class="{'hidden': refuelCtrl.hiddenRefuelHeader}">
+            <div class="col col-33 col-offset-10 text-right logoRefuel"><img class="responsive" ng-src="img/logos_stations/lowcostfuel.svg" src="img/logos_stations/lowcostfuel.svg"></div>
+            <div class="col">
+                <h5 class="margin0 ng-binding">LOWCOSTFUEL<br>
+                <span class="normal ng-binding">CALLE CARRETERA BARCELONA, 340</span></h5>
+            </div>
+        </div>
+        <!--<ng-include src="'modules/repostar/views/repostar_select.html'"></ng-include>
+        <ng-include src="'modules/repostar/views/repostar_selected.html'"></ng-include>-->
+       
+    <div class="text-center">
+        <!-- ngIf: refuelCtrl.refuelingLoading -->
+    </div>
+    
+    <div ng-show="!refuelCtrl.refuelingLoading" class="">
+    
+    
+    
+    <div class="selectRefueling">
+            <!--{{refuelCtrl.refueling}}-->
+            <strong>Surtidor</strong>
+            <div class="borderRefueling"></div>
+            <ion-scroll class="selectsRefueling scroll-view ionic-scroll" delegate-handle="pump" direction="x" style="width:100%;"><div class="scroll" style="-webkit-transform: translate3d(0px, 0px, 0px) scale(1);">
+                <!-- ngRepeat: pump in refuelCtrl.pumps -->
+                <button type="button" class="refuelBtn button-clear button ng-binding" ng-href="#" ng-class="{'active' : pump.id == refuelCtrl.refueling.pump, 'disabled': refuelCtrl.finish}" 
+                 ng-click="refuelCtrl.selectRefueling('pump', pump, $index);" href="#">1</button>
+                <!-- end ngRepeat: pump in refuelCtrl.pumps -->
+                <button type="button" class="refuelBtn button-clear button ng-binding" ng-href="#" ng-class="{'active' : pump.id == refuelCtrl.refueling.pump, 'disabled': refuelCtrl.finish}" 
+                 ng-click="refuelCtrl.selectRefueling('pump', pump, $index);" href="#">2</button>
+                <!-- end ngRepeat: pump in refuelCtrl.pumps -->
+                <button type="button" class="refuelBtn button-clear button ng-binding" ng-href="#" ng-class="{'active' : pump.id == refuelCtrl.refueling.pump, 'disabled': refuelCtrl.finish}" 
+                 ng-click="refuelCtrl.selectRefueling('pump', pump, $index);" href="#">3</button>
+                <!-- end ngRepeat: pump in refuelCtrl.pumps -->
+                <button type="button" class="refuelBtn button-clear button ng-binding" ng-href="#" ng-class="{'active' : pump.id == refuelCtrl.refueling.pump, 'disabled': refuelCtrl.finish}" 
+                ng-click="refuelCtrl.selectRefueling('pump', pump, $index);" href="#">4</button>
+                <!-- end ngRepeat: pump in refuelCtrl.pumps -->
+                <button type="button" class="refuelBtn button-clear button ng-binding" ng-href="#" ng-class="{'active' : pump.id == refuelCtrl.refueling.pump, 'disabled': refuelCtrl.finish}" 
+                 ng-click="refuelCtrl.selectRefueling('pump', pump, $index);" href="#">5</button>
+                <!-- end ngRepeat: pump in refuelCtrl.pumps -->
+                <button type="button" class="refuelBtn button-clear button ng-binding" ng-href="#" ng-class="{'active' : pump.id == refuelCtrl.refueling.pump, 'disabled': refuelCtrl.finish}" 
+                 ng-click="refuelCtrl.selectRefueling('pump', pump, $index);" href="#">5</button>
+                <!-- end ngRepeat: pump in refuelCtrl.pumps -->
+                <button type="button" class="refuelBtn button-clear button ng-binding" ng-href="#" ng-class="{'active' : pump.id == refuelCtrl.refueling.pump, 'disabled': refuelCtrl.finish}" 
+                 ng-click="refuelCtrl.selectRefueling('pump', pump, $index);" href="#">5</button>
+                <!-- end ngRepeat: pump in refuelCtrl.pumps -->
+                <button type="button" class="refuelBtn button-clear button ng-binding" ng-href="#" ng-class="{'active' : pump.id == refuelCtrl.refueling.pump, 'disabled': refuelCtrl.finish}" 
+                 ng-click="refuelCtrl.selectRefueling('pump', pump, $index);" href="#">5</button>
+                <!-- end ngRepeat: pump in refuelCtrl.pumps -->
+                
+            </div><div class="scroll-bar scroll-bar-h"><div class="scroll-bar-indicator scroll-bar-fade-out" style="-webkit-transform: translate3d(0px, 0px, 0px) scaleX(1); width: 340px;"></div></div></ion-scroll>
+            <div class="borderRefueling"></div>
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+       <div class="selectRefueling selectRefuelingFuel">
+            <div class="clearfix overflow">
+                <div class="pull-left"><strong>Combustible</strong></div>
+                <!-- ngIf: refuelCtrl.promotion.discount && !refuelCtrl.refueling.full -->
+            </div>
+            
+            <div class="borderRefueling"></div>
+            <ion-scroll class="selectsRefueling selectsRefuelingFueltype scroll-view ionic-scroll" delegate-handle="fueltype" direction="x" style="width:100%;"><div class="scroll" style="-webkit-transform: translate3d(0px, 0px, 0px) scale(1);">
+                <!-- ngRepeat: fueltype in refuelCtrl.fueltypes -->
+                <button type="button" class="refuelBtn button-clear button disabled" ng-href="#" ng-class="{'active' : fueltype == refuelCtrl.refueling.fueltype, 'disabled': !refuelCtrl.refueling.pump || refuelCtrl.finish}" 
+                 ng-click="refuelCtrl.selectRefueling('fueltype', fueltype, $index);" href="#"><i class="icon-GPR">GPR</i></button>
+                <!-- end ngRepeat: fueltype in refuelCtrl.fueltypes -->
+                <button type="button" class="refuelBtn button-clear button disabled" ng-href="#" ng-class="{'active' : fueltype == refuelCtrl.refueling.fueltype, 'disabled': !refuelCtrl.refueling.pump || refuelCtrl.finish}" 
+                 ng-click="refuelCtrl.selectRefueling('fueltype', fueltype, $index);" href="#"><i class="icon-G98">G98</i></button>
+                <!-- end ngRepeat: fueltype in refuelCtrl.fueltypes -->
+                <button type="button" class="refuelBtn button-clear button disabled" ng-href="#" ng-class="{'active' : fueltype == refuelCtrl.refueling.fueltype, 'disabled': !refuelCtrl.refueling.pump || refuelCtrl.finish}" 
+                 ng-click="refuelCtrl.selectRefueling('fueltype', fueltype, $index);" href="#"><i class="icon-GOA">GOA</i></button>
+                <!-- end ngRepeat: fueltype in refuelCtrl.fueltypes -->
+                <button type="button" class="refuelBtn button-clear button disabled" ng-href="#" ng-class="{'active' : fueltype == refuelCtrl.refueling.fueltype, 'disabled': !refuelCtrl.refueling.pump || refuelCtrl.finish}" 
+                 ng-click="refuelCtrl.selectRefueling('fueltype', fueltype, $index);" href="#"><i class="icon-NGO">NGO</i></button>
+                <!-- end ngRepeat: fueltype in refuelCtrl.fueltypes -->
+            </div><div class="scroll-bar scroll-bar-h"><div class="scroll-bar-indicator scroll-bar-fade-out" style="-webkit-transform: translate3d(0px, 0px, 0px) scaleX(1); width: 340px;"></div></div></ion-scroll>
+            <div class="borderRefueling"></div>
+            <!-- ngIf: refuelCtrl.refueling.fueltype -->
+        </div>
+        
+       
+
+        <div class="selectRefueling mBottom0">
+            <div class="clearfix overflow">
+                <div class="pull-left"><strong>Precio</strong></div>
+                <!-- ngIf: refuelCtrl.promotion.discount && !refuelCtrl.refueling.full -->
+            </div>
+            <div class="borderRefueling"></div>
+            <ion-scroll class="selectsRefueling scroll-view ionic-scroll" delegate-handle="amount" direction="x" style="width:100%;"><div class="scroll" style="-webkit-transform: translate3d(0px, 0px, 0px) scale(1);">
+                <!-- ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">5
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">10
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">15
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">20
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">25
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">30
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">35
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">40
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">45
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">50
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">55
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">60
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">65
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">70
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">75
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">80
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">85
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">90
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">95
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts --><button type="button" class="refuelBtn button-clear button ng-binding disabled" ng-href="#" ng-class="{'active' : amount == refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full, 'disabled': refuelCtrl.refueling.full || !refuelCtrl.refueling.fueltype || refuelCtrl.finish}"  ng-click="refuelCtrl.selectRefueling('amount', amount, $index);" href="#">99
+                    <p class="fsSSmall mTop0">€</p>
+                </button><!-- end ngRepeat: amount in refuelCtrl.amounts -->
+            </div><div class="scroll-bar scroll-bar-h"><div class="scroll-bar-indicator scroll-bar-fade-out" style="-webkit-transform: translate3d(0px, 0px, 0px) scaleX(1); width: 340px;"></div></div></ion-scroll>
+            <div class="borderRefueling"></div>
+            <div class="refuelingMoreInfo"><!-- ngIf: refuelCtrl.refueling.amount && !refuelCtrl.refueling.full && refuelCtrl.promotion.promType != 'discount' --><!-- ngIf: refuelCtrl.promotion.promType == 'discount' && !refuelCtrl.refueling.full --></div>
+        </div>
+
+
+        <div class="text-right noBorder greyOpeny-bg item item-toggle toggle-small ng-valid" ng-disabled="refuelCtrl.finish" ng-model="refuelCtrl.refueling.full" ng-class="{'opacity_50': refuelCtrl.finish}" toggle-class="toggle-openy"><div ng-transclude=""><strong>Lleno</strong></div><label class="toggle toggle-openy disable-user-behavior"><input type="checkbox" ng-model="refuelCtrl.refueling.full" ng-disabled="refuelCtrl.finish" class="ng-pristine ng-untouched ng-valid"><div class="track"><div class="handle"></div></div></label></div>
+        
+        <div>
+            <div class="btnSendContainer">
+                <!-- ngIf: refuelCtrl.loading -->
+                <button type="button" ng-disabled="!refuelCtrl.refueling.amount &amp;&amp; !refuelCtrl.refueling.full" class="noBorder btnSend button openy-bg disable-user-behavior" ng-class="{'activated': refuelCtrl.refueling.amount &amp;&amp; refuelCtrl.refueling.full}" style="width: 55%; -webkit-transform: translate3d(0px, 0px, 0px) scale(1);" disabled="disabled">Activar&nbsp;surtidor</button>
+            </div>
+        </div>
+        
+
+    </div>
+
+
+    </div>
+    <div class="scroll-bar scroll-bar-v">
+    <div class="scroll-bar-indicator scroll-bar-fade-out" style="-webkit-transform: translate3d(0px, 0px, 0px) scaleY(1); height: 504px;"></div></div>
+
+
+<!-- END -->

@@ -1,0 +1,40 @@
+<ion-view view-title="<i class='openy icon-settings'></i> Cuenta de usuario">
+    <ion-content class="padding">
+        <form class="profileDataForm">
+            <div class="clearfix">
+                <div class="pull-left">
+                    <button type="button" class="button button-clear button-small" ui-sref="app.setting.password">Cambiar contraseña</button>
+                </div>
+                <div class="pull-right">
+                    <button type="button" class="button button-clear button-small" ng-click="prflSCtrl.forgotPassword();">He olvidado mi contraseña</button>
+                </div>
+            </div>
+            <div class="mTop10">
+                <p>
+                    <label>Correo electrónico</label>
+                    <br>
+                    <input required type="email" ng-model="prflSCtrl.profileData.email" tabindex="1" name="username" ng-blur="prflSCtrl.update('username');">
+                </p>
+                <p>
+                    <label>Nombre</label>
+                    <br>
+                    <input required type="text" ng-model="prflSCtrl.profileData.first_name" tabindex="2" name="first_name"  ng-blur="prflSCtrl.update('first_name');">
+                </p>
+                <p>
+                    <label>Apellidos</label>
+                    <br>
+                    <input required type="text" ng-model="prflSCtrl.profileData.last_name" tabindex="3" name="last_name"  ng-blur="prflSCtrl.update('last_name');">
+                </p>
+                <p>
+                    <label>Teléfono</label>
+                    <br>
+                    <input required type="tel" disabled="disabled" ng-value="prflSCtrl.profileData.phone_number" name="phone_number">
+                </p>
+            </div>
+            <p><button type="button" class="button button-clear button-small" ui-sref="app.setting.changePhone">Cambiar teléfono</button></p>
+            <div class="mTop20 text-right" ng-if="!myUser.validated">
+                <button type="button" ui-sref="app.validate" class="button sendProfileDataForm openy-bg"><strong>Validar</strong></button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>
