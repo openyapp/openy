@@ -1,0 +1,27 @@
+{
+    "name": "elemental/elem-sqliteauth",
+    "description": "Simple autht.",
+    "type": "library",
+    "keywords": [
+        "zf2", "auth", "authentication"
+    ],
+    "homepage": "https://bitbucket.org/elemedia/elem-sqliteauth/src",
+    "authors": [
+        {
+            "name": "Agustín Calderón",
+            "email": "@gmail.com",
+            "homepage": "http://elemedia.net/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload" : {
+        "psr-0" : {
+            "ElemSqliteauth" : "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }     
+}

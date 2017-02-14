@@ -1,0 +1,27 @@
+{
+    "name": "elemental/elem-basicconfig",
+    "description": "Basic Configuration collection.",
+    "type": "library",
+    "keywords": [
+        "zf2", "cache", "logs", "config"
+    ],
+    "homepage": "https://bitbucket.org/elemedia/elem-basicconfig/src",
+    "authors": [
+        {
+            "name": "Agustín Calderón",
+            "email": "@gmail.com",
+            "homepage": "http://elemedia.net/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload" : {
+        "psr-0" : {
+            "ElemBasicconfig" : "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }     
+}

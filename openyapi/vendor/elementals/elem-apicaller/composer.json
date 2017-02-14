@@ -1,0 +1,27 @@
+{
+    "name": "elemental/elem-apicaller",
+    "description": "Api Caller abstraction layer.",
+    "type": "library",
+    "keywords": [
+        "zf2", "api"
+    ],
+    "homepage": "https://bitbucket.org/elemedia/elem-apicaller/src",
+    "authors": [
+        {
+            "name": "Agustín Calderón",
+            "email": "@gmail.com",
+            "homepage": "http://elemedia.net/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload" : {
+        "psr-0" : {
+            "ElemApicaller" : "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }     
+}

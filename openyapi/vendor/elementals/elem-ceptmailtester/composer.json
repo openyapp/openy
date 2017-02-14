@@ -1,0 +1,25 @@
+{
+  "name": "elemental/elem-ceptmailtester",
+  "description": "Test emails in Codeception tests",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Agustín F. Calderón",
+      "email": "@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "codeception/codeception": "~2.0",
+    "guzzlehttp/guzzle": "~4.0"
+  },
+  "autoload": {
+  	"psr-0" : {
+            "ElemCeptMailtester" : "src/"
+        },
+  	"psr-4": {
+      "ElemCeptMailtester\\Module\\": "src/"
+    }
+  },
+  "minimum-stability": "stable"
+}

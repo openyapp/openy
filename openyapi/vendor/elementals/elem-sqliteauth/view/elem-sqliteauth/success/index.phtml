@@ -1,0 +1,24 @@
+<?php 
+//\Zend\debug\Debug::dump($users);
+?>
+
+<br />
+<div style="width:60%; float:left;">
+<div style="float:left; padding-right:16px;">
+    <?php echo $this->gravatar($users['email']) ?>
+    <?php //\Zend\Debug\Debug::dump($this->authIdentity());?>
+</div>
+
+<h3>
+    <?php echo $this->translate('Hello'); ?>, <?php echo $users['name'] ?>!
+</h3>
+<a href="<?php echo $this->url('login/process', array('action'=>'logout')) ?>">
+    [<?php echo $this->translate('Sign Out'); ?>]
+</a>
+<br/><br/>
+</div>
+
+<div style="float:right; padding-right:16px;">
+<a class="btn btn-lg btn-success" href="/apigility/swagger" role="button">Documentation</a>
+
+</div>
